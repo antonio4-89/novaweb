@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './services/auth.guard';
 import { homeRouter } from './router/home.routes';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { 
@@ -11,8 +12,11 @@ const routes: Routes = [
     children: homeRouter,
     // canActivate: [AuthGuard]
   },
+
+  { path: 'login', component: AuthComponent },
   
   { path: '**', redirectTo: ''}
+
 ];
 
 @NgModule({

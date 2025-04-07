@@ -11,12 +11,25 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterComponent } from './router/router.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { AuthComponent } from './auth/auth.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, RouterComponent, ProductFormComponent, ProductListComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    RouterComponent,
+    ProductFormComponent,
+    ProductListComponent,
+    AuthComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
   providers: [
-    provideFirebaseApp( () => initializeApp( environment.firebaseConfig )),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
 
     // provideFirebaseApp(() =>
     //   initializeApp({
