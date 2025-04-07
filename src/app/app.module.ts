@@ -10,9 +10,10 @@ import { environment } from '../environments/environment';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterComponent } from './router/router.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, RouterComponent, ProductFormComponent],
+  declarations: [AppComponent, DashboardComponent, RouterComponent, ProductFormComponent, ProductListComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideFirebaseApp( () => initializeApp( environment.firebaseConfig )),

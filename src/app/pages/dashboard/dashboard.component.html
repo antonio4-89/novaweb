@@ -1,39 +1,93 @@
-<div class="admin-container">
-    <header class="admin-header">
-      <h1><i class="fas fa-utensils"></i> Gestión de Productos</h1>
-    </header>
-  
-    <div class="admin-main">
-      <div class="toolbar">
-        <button class="btn-primary" >
-          <i class="fas fa-plus"></i> Nuevo Producto
-        </button>
-        
-        <div class="category-filter">
-          <label for="category">Filtrar por categoría:</label>
-          <select id="category" (change)="onCategoryChange($event)">
-            <option value="all">Todas</option>
-            <option value="comida">Comida</option>
-            <option value="bebida">Bebidas</option>
-            <option value="postre">Postres</option>
-          </select>
-        </div>
-        
-        <div class="search-box">
-          <input type="text" placeholder="Buscar productos..." 
-                 (input)="onSearchChange($event)">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
-  
-      <!-- <app-product-list 
-        [products]="filteredProducts" 
-        (delete)="onProductDeleted()">
-      </app-product-list>
-  
-      <app-product-form 
-        #productForm
-        (productCreated)="onProductCreated()">
-      </app-product-form> -->
+<div class="fondo">
+  <div class="header">
+    <h1>Mi Dulce Encanto</h1>
+    <span class="subtitle">Descubre el encanto del sabor casero</span>
+  </div>
+
+  <input type="text" class="search-bar" placeholder="Buscar Antojito">
+
+  <div class="tabs-container">
+    <div class="tab-group">
+      <button *ngFor="let tap of taps; let i = index" 
+              [class.active]="currentTap === i"
+              (click)="goToTap(i)"
+              class="tab-button">
+        {{tap.tapTitle}}
+      </button>
     </div>
   </div>
+
+  <div class="swiper-container">
+    @if (currentTap === 0) {
+      <div class="products-grid">
+        <div class="product-row">
+          @for (item of productos; track item.id) {
+            <div class="product-card">
+              <div class="product-image">
+                <img [src]="item.image" loading="lazy" [alt]="item.nombre">
+              </div>
+              <div class="product-details">
+                <h3>{{item.nombre}}</h3>
+                <div class="price-section">
+                  <span class="price">${{item.precio}}</span>
+                  <p class="customization">¡Personaliza tu pedido! 🥰</p>
+                </div>
+                <button class="buy-btn" (click)="ir()">
+                  Comprar
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+    
+    @if (currentTap === 1) {
+      <div class="products-grid">
+        <div class="product-row">
+          @for (item of snacks; track item.id) {
+            <div class="product-card">
+              <div class="product-image">
+                <img [src]="item.image" loading="lazy" [alt]="item.nombre">
+              </div>
+              <div class="product-details">
+                <h3>{{item.nombre}}</h3>
+                <div class="price-section">
+                  <span class="price">${{item.precio}}</span>
+                  <p class="customization">¡Personaliza tu pedido! 🥰</p>
+                </div>
+                <button class="buy-btn" (click)="ir()">
+                  Comprar
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+    
+    @if (currentTap === 2) {
+      <div class="products-grid">
+        <div class="product-row">
+          @for (item of productos; track item.id) {
+            <div class="product-card">
+              <div class="product-image">
+                <img [src]="item.image" loading="lazy" [alt]="item.nombre">
+              </div>
+              <div class="product-details">
+                <h3>{{item.nombre}}</h3>
+                <div class="price-section">
+                  <span class="price">${{item.precio}}</span>
+                  <p class="customization">¡Personaliza tu pedido! 🥰</p>
+                </div>
+                <button class="buy-btn" (click)="ir()">
+                  Comprar
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

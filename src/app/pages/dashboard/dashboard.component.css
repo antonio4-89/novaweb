@@ -1,85 +1,151 @@
-.admin-container {
-    padding: 20px;
+
+.header {
+  margin-bottom: 20px;
+  
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #D45516;
+    margin-bottom: 4px;
+    font-size: 1.8rem;
   }
   
-  .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+  .subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.9rem;
   }
+}
+
+.search-bar {
+  --border-radius: 12px;
+  --box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+.tabs-container {
+  margin: 16px 0;
   
-  .admin-header h1 {
-    margin: 0;
-    color: #2c3e50;
+  .custom-segment {
+    --background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    
+    ion-segment-button {
+      --color: #666;
+      --color-checked: #D45516;
+      --indicator-color: #D45516;
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+      min-height: 40px;
+    }
   }
+}
+
+.product-swiper {
+  padding-bottom: 24px;
   
-  .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .category-filter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .category-filter select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .search-box {
-    position: relative;
-    width: 300px;
-  }
-  
-  .search-box input {
-    width: 100%;
-    padding: 8px 15px 8px 35px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .search-box i {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777;
-  }
-  
-  .btn-primary {
-    background: #2980b9;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .btn-primary:hover {
-    background: #1a6ca8;
-  }
-  
-  @media (max-width: 768px) {
-    .toolbar {
-      flex-direction: column;
-      align-items: flex-start;
+  .products-grid {
+    padding: 0;
+    
+    .product-card {
+      background: rgb(71, 62, 62);
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      
+      &:active {
+        transform: scale(0.98);
+      }
+      z-index: 1;
     }
     
-    .search-box {
+    .product-image {
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        z-index: 1;
+        transform: translate(0%, 0%) rotate(-25deg);
+      }
+      
+    }
+
+    .product-card:before{
+      content: '';
+      position: absolute;
+      top: 0%;
+      left: -2%;
+      width: 104%;
+      height: 110%;
+      background: #ffe600;
+      clip-path: circle(200px at 80% -20%);
+      z-index: -2;
+    }
+  
+    .product-details {
+      padding: 12px;
+      
+      h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0 0 8px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .price-section {
+        margin-bottom: 12px;
+        
+        .price {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 700;
+          color: #D45516;
+          font-size: 1.1rem;
+          display: block;
+        }
+        
+        .customization {
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.7rem;
+          color: #d6d6d6;
+          margin: 4px 0 0 0;
+        }
+      }
+    }
+    
+    .buy-btn {
+      --background: #D45516;
+      --background-activated: #B34712;
+      --border-radius: 8px;
+      --padding-top: 12px;
+      --padding-bottom: 12px;
       width: 100%;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin: 0;
     }
   }
+}
+
+/* Optimización para diferentes tamaños de pantalla */
+@media (max-width: 360px) {
+  .product-card {
+    ion-button {
+      font-size: 0.7rem;
+    }
+  }
+}

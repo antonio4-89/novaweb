@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/produc.interface';
 import { ProductosService } from '../../services/productos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,48 +11,48 @@ import { ProductosService } from '../../services/productos.service';
 export class DashboardComponent {
 
   products: Product[] = [];
-  filteredProducts: Product[] = [];
-  selectedCategory: string = 'all';
-  searchTerm: string = '';
+  
+  currentTap = 0;
+  categories: any[] = [];
+  swiperReady = false;
 
-  constructor(private productService: ProductosService) {}
+  taps = [
+    { tapTitle: "Antojitos" }, 
+    { tapTitle: "Aguas" }, 
+    { tapTitle: "Postres" }
+  ];
 
-  ngOnInit(): void {
-    this.loadProducts();
+  productos = [
+    { id: 1, image: "assets/image/flan.png", nombre: "Flan de leche", precio: "140" },
+    { id: 2, image: "assets/image/platanos.png", nombre: "Plátanos", precio: "40" },
+    { id: 3, image: "assets/image/esquite.png", nombre: "Esquite", precio: "80" },
+    { id: 4, image: "assets/image/pastel.png", nombre: "Pastel", precio: "100" },
+    { id: 5, image: "assets/image/flan.png", nombre: "Flan napolitano", precio: "140" },
+    { id: 6, image: "assets/image/totopo.webp", nombre: "Totopos", precio: "190" },
+  ];
+
+  snacks = [
+    { id: 6,image: "assets/image/papas.png", nombre: "Papas", precio: "20" }
+  ];
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.categories = [this.productos, this.snacks, this.productos];
   }
 
-  loadProducts(): void {
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-      this.filterProducts();
+  async ir() {
+    await this.router.navigate(['/ingredientes'], {
+      state: { product: this.productos[0] } 
     });
   }
 
-  filterProducts(): void {
-    this.filteredProducts = this.products.filter(product => {
-      const matchesCategory = this.selectedCategory === 'all' || product.category === this.selectedCategory;
-      const matchesSearch = product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
-                           product.description.toLowerCase().includes(this.searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
+
+  goToTap(item:number){
+    this.currentTap = item
   }
 
-  onCategoryChange(category: any): void {
-    this.selectedCategory = category.target.value;
-    this.filterProducts();
-  }
-
-  onSearchChange(searchTerm: any): void {
-    
-    this.searchTerm = searchTerm.target.value;
-    this.filterProducts();
-  }
-
-  onProductCreated(): void {
-    this.loadProducts();
-  }
-
-  onProductDeleted(): void {
-    this.loadProducts();
+  onSwiperReady() {
+    this.swiperReady = true;
   }
 }
