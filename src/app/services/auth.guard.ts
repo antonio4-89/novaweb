@@ -22,7 +22,8 @@ export class AuthGuard implements CanActivate {
           return true;
         } else {
           console.log('Acceso denegado: redirigiendo a /sign-in');
-          this.router.navigate(['/sign-in']);
+          // this.router.navigate(['/sign-in']);
+          this.router.navigate(['']);
           return false;
         }
       })

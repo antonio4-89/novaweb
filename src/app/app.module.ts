@@ -7,9 +7,12 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { RouterComponent } from './router/router.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DashboardComponent, RouterComponent, ProductFormComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideFirebaseApp( () => initializeApp( environment.firebaseConfig )),
