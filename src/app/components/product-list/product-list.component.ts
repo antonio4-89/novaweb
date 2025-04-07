@@ -6,7 +6,8 @@ import { CategoriaService } from '../../services/categoria.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrl: './product-list.component.css',
+  standalone: false
 })
 export class ProductListComponent {
   @Input() products: Product[] = [];

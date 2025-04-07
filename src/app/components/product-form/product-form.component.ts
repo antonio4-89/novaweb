@@ -6,7 +6,8 @@ import { Product } from '../../models/produc.interface';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrl: './product-form.component.css'
+  styleUrl: './product-form.component.css',
+  standalone: false
 })
 export class ProductFormComponent {
 

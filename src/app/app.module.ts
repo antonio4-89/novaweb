@@ -19,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     DashboardComponent,
     RouterComponent,
-    ProductFormComponent,
     ProductListComponent,
     AuthComponent
   ],
